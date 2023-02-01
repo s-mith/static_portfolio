@@ -35,15 +35,15 @@
         <!-- centered div -->
         <div style="position: relative; width: 95%; height: 10em; padding: 1em; display: flex; align-items: center; justify-content: center;" id="an-image-element-id" >
             <h1 style="font-size: 5em; font-family: 'Courier New', Courier, monospace; color: #ffcfe5;"><span style="position: absolute; width:100%; left:-0.5rem; text-align: center;top:1rem;">avery they/them</span> <span style="position: absolute; width:100%; left:0.5rem;text-align: center; top:1rem;">avery they/them</span>  <span style="position: absolute;color:#000; width:100%; left:0.0rem;text-align: center;top:1rem;">avery they/them</span> </h1>
-            <div style="position: absolute; display: flex; right: 0%; bottom: 0;">
-                <a href="https://www.linkedin.com/in/avery-smith-2358aa212/" target="_blank"><div><img src="imgs/linkedin.png" width="75" height="75"></div></a>
-                <a href="https://github.com/s-mith" target="_blank"><div><img src="imgs/github.png" width="75" height="75"></div></a>
+            <div class="shortcuts">
+                <a href="https://www.linkedin.com/in/avery-smith-2358aa212/" target="_blank"><div><img src="imgs/linkedin.png" class="shortcut"></div></a>
+                <a href="https://github.com/s-mith" target="_blank"><div><img src="imgs/github.png" class="shortcut"></div></a>
             </div>
         </div>
         
     </div>
 
-    <div style="padding-left: 10em; padding-right: 10em; ">
+    <div class="maincontent">
         <div id="welcome!" class="content">
             <h2 style="text-align: center; padding-bottom: 0;">
                 welcome to my portfolio!
@@ -86,7 +86,18 @@
             <div class="content_scrollable">
 
                 
+                <div style="display: flex; padding-bottom: 2em;">
 
+                    <div><img src="imgs/game.png" width="100" height="100"></div>
+                    <div style="padding-left: 1em;"><a href="https://s-mith.itch.io/untitled-game" target="_blank"><span
+                                class="project_title">untitled game</span></a>
+                        <br>
+                        my current project, a 2d massively multiplayer game made in python and pygame
+                        <br>
+                        <a href="https://github.com/s-mith/my_repo">github</a>
+                    </div>
+
+                </div>
 
                 <!-- icon -->
                 <div style="display: flex; padding-bottom: 2em;">
@@ -237,6 +248,8 @@
             font-weight: bold;
         }
 
+        
+
         button:focus {
             background-color: #ff5eaa;
         }
@@ -302,6 +315,16 @@
             font-size: 1.5em;
         }
 
+        .maincontent {
+                padding-left: 10em; padding-right: 10em;
+            }
+
+        .shortcut {
+            width: 75px;
+            height: 75px;
+        }
+
+
         @media screen and (max-width: 656px) {
             .content_scrollable {
                 height: 55%;
@@ -309,7 +332,28 @@
             }
         }
 
+        
 
+
+        .shortcuts {
+            position: absolute;
+            display: flex;
+            right: 0;
+            bottom: 0;
+        }
+
+        @media screen and (max-width: 740px) {
+            .shortcuts {
+                position: absolute; display: flex; right: 0; top: 0;
+            }
+            .shortcut {
+                width: 50px;
+                height: 50px;
+            }
+            .maincontent {
+                padding-left: 2em; padding-right: 2em;
+            }
+        }
 
         .content_scrollable {
             -ms-overflow-style: none;
