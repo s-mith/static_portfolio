@@ -1,0 +1,180 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <!-- import main.js -->
+
+
+</head>
+
+<body>
+
+    <div style="display: grid;grid-template-columns: repeat(3, 1fr); ">
+        <button disabled class="nav">
+            <h1>
+                welcome!
+            </h1>
+        </button>
+        <button class="nav">
+            <h1>
+                featured projects
+            </h1>
+        </button>
+        <button class="nav">
+            <h1>
+                contact
+            </h1>
+        </button>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; width: 100%; padding-top: 1em;">
+        <div style="width: 95%; height: 10em; padding: 1em;" id="an-image-element-id"></div>
+    </div>
+    
+    <div style="padding-left: 10em; padding-right: 10em; ">
+        <div id="welcome!" class="content">
+            <h2 style="text-align: center;">
+                welcome to my portfolio!
+            </h2>
+            <div class="content_scrollable">
+            <p>
+                hey! my name is avery smith. i am a 19 year old student currently studying at stevens institute of
+                technology in hoboken, new jersey. i am majoring in computer science. i am interested in web
+                development, data science, and machine learning. i am currently looking for a summer internship in the
+                field of software engineering.
+
+            </p>
+            <p>
+                previously i have interned at assemble inc. a retail web development company helping to create
+                e-commerse platforms for their clients. another relevent experience i've had is teaching scratch and
+                python to middle school students at my highschool seattle academy of arts and sciences.
+            </p>
+            <p>
+                i have proficiancy with the following languages: python, javascript. i can use c++, java and go as well,
+                but i am not as well aquanted with them. i am also familiar with the following frameworks: react and
+                next. i regularly use the following tools: git, github and vscode.
+            </p>
+            <p>
+                some of my hobbies include: playing video games (card games like magic the gathering and inscyrption are
+                my favorite), programming, and playing ultimate frisbee.
+            </p>
+            <div>
+        </div>
+
+        <div class="hidden content" id="featured projects">
+            <h2 style="text-align: center;">
+                featured projects
+            </h2>
+            <div class="content_scrollable">
+
+                <p>
+                    here are some of my favorite projects...
+                </p>
+            </div>
+        </div>
+
+        <div class="hidden content" id="contact">
+            <h2 style="text-align: center;">
+                contact
+            </h2>
+            <div class="content_scrollable">
+
+                <p>
+                    you can contact me at...
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+        button {
+            background-color: #fa8ec1;
+            font-family: 'Indie Flower', cursive;
+            border-radius: 0px;
+            border: none;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #ff5eaa;
+            cursor: pointer;
+        }
+
+        button:focus {
+            background-color: #ff5eaa;
+        }
+
+        button:disabled,
+        button[disabled] {
+            background-color: rgba(0, 0, 0, 0);
+            color: #000;
+        }
+
+        body {
+            background-color: #ffcfe5;
+            font-family: 'Indie Flower', cursive;
+        }
+
+        p {
+            font-size: 1.5em;
+            /* tabbed  in */
+            text-indent: 50px;
+            /* first character of paragraph larger */
+        }
+
+        #an-image-element-id {
+            background-image: url("data:image/png;base64,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");
+        }
+
+        p::first-letter {
+            font-size: 2em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .content_scrollable {
+            height: 60%;
+            overflow-y: scroll;
+            /* hide scrollbar */
+            /* set scrollbar to transparent */
+        }
+
+        .content_scrollable {
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .content_scrollable::-webkit-scrollbar { 
+            display: none;  /* Safari and Chrome */
+        }
+    </style>
+
+    <script>
+        const buttons = document.querySelectorAll('.nav');
+        // get all divs with class 'content'
+        const divs = document.querySelectorAll('.content');
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', () => {
+                for (let j = 0; j < buttons.length; j++) {
+                    buttons[j].disabled = false;
+                };
+                // disable the button that was clicked
+                buttons[i].disabled = true;
+                // hide all divs
+                for (let j = 0; j < divs.length; j++) {
+                    divs[j].classList.add('hidden');
+                }
+                // show the div that corresponds to the button that was clicked
+                divs[i].classList.remove('hidden');
+
+            });
+        }</script>
+
+</body>
+
+</html>
