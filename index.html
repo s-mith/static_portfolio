@@ -14,13 +14,13 @@
 
 <body>
 
-    <div style="display: grid;grid-template-columns: repeat(3, 1fr); ">
-        <button disabled class="nav">
+    <div id="navbar" style="display: grid;grid-template-columns: repeat(3, 1fr); ">
+        <!-- <button disabled class="nav">
             <h1>
                 welcome!
             </h1>
-        </button>
-        <button class="nav">
+        </button> -->
+        <!-- <button class="nav">
             <h1>
                 featured projects
             </h1>
@@ -29,7 +29,7 @@
             <h1>
                 contact
             </h1>
-        </button>
+        </button> -->
     </div>
     <div style="display: flex; justify-content: center; width: 100%;  padding-top: 1em;">
         <!-- centered div -->
@@ -43,8 +43,9 @@
         
     </div>
 
-    <div class="maincontent">
-        <div id="welcome!" class="content">
+    <div id="maincontent">
+        
+        <!-- <div id="welcome!" class="content">
             <h2 style="text-align: center; padding-bottom: 0;">
                 welcome to my portfolio!
             </h2>
@@ -77,7 +78,7 @@
                     my favorite), programming, and playing ultimate frisbee.
                 </p>
             </div>
-        </div>
+        </div> -->
 
         <div class="hidden content" id="featured projects">
             <h2 style="text-align: center;">
@@ -95,6 +96,19 @@
                         my current project, a 2d massively multiplayer game made in python and pygame
                         <br>
                         <a href="https://github.com/s-mith/game">github</a>
+                    </div>
+
+                </div>
+
+                <div style="display: flex; padding-bottom: 2em;">
+
+                    <div><img src="imgs/portfolio.png" width="100" height="100"></div>
+                    <div style="padding-left: 1em;"><a href="."><span
+                                class="project_title">avery's portfolio</span></a>
+                        <br>
+                            my portfolio website, made with html javascript and css. code is one file with a folder for imgs
+                        <br>
+                        <a href="https://github.com/s-mith/static_portfolio">github</a>
                     </div>
 
                 </div>
@@ -339,7 +353,7 @@
             font-size: 1.5em;
         }
 
-        .maincontent {
+        #maincontent {
                 padding-left: 10em; padding-right: 10em;
             }
 
@@ -374,7 +388,7 @@
                 width: 50px;
                 height: 50px;
             }
-            .maincontent {
+            #maincontent {
                 padding-left: 2em; padding-right: 2em;
             }
         }
@@ -393,25 +407,197 @@
     </style>
 
     <script>
-        const buttons = document.querySelectorAll('.nav');
-        // get all divs with class 'content'
-        const divs = document.querySelectorAll('.content');
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].addEventListener('click', () => {
-                for (let j = 0; j < buttons.length; j++) {
-                    buttons[j].disabled = false;
-                };
+
+        
+        // add a content div and add it to an array
+        const content = {};
+        const buttons = {};
+
+        const new_section = (section_name, section_title, section_id, section_content) => {
+            // add a new button to the navbar
+            const new_button = document.querySelector('#navbar').appendChild(document.createElement('button'));
+            new_button.classList.add('nav');
+            new_button.id = "_"+section_id;
+            
+            new_button.innerHTML = "<h1>"+section_name+"</h1>";
+            // add a new div to the content div
+            const new_div = document.querySelector('#maincontent').appendChild(document.createElement('div'));
+            new_div.classList.add('content', 'hidden');
+            new_div.id = section_id;
+
+            const new_header = new_div.appendChild(document.createElement('h2'));
+            new_header.innerHTML = section_name;
+            new_header.style = "text-align: center;";
+
+
+
+            const new_div_content = new_div.appendChild(document.createElement('div'));
+            new_div_content.classList.add('content_scrollable');
+            new_div_content.innerHTML = section_content;
+
+
+            // when the button is clicked, show the corresponding div and hide all other divs
+
+            new_button.addEventListener('click', () => {
+                for (const button in buttons) {
+                    buttons[button].disabled = false;
+                }
                 // disable the button that was clicked
-                buttons[i].disabled = true;
+                new_button.disabled = true;
                 // hide all divs
-                for (let j = 0; j < divs.length; j++) {
-                    divs[j].classList.add('hidden');
+                for (const div in content) {
+                    content[div].classList.add('hidden');
                 }
                 // show the div that corresponds to the button that was clicked
-                divs[i].classList.remove('hidden');
+                content[section_id].classList.remove('hidden');
 
             });
+
+            // add the button and div to the arrays
+            buttons[section_id] = new_button;
+            content[section_id] = new_div;
         }
+        
+
+
+        // add the first section
+        new_section("welcome!", "welcome to my portfolio!", "welcome", `<p>
+                    hey! my name is avery smith. i am a 19 year old student currently studying at <a
+                        href="https://www.stevens.edu/" target="_blank" style="color: #A32638; ">stevens institute of
+                        technology</a> in hoboken, new jersey. i am majoring in computer science. i am interested in web
+                    development, data science, and machine learning. i am currently looking for a summer internship in
+                    the
+                    field of software engineering.
+
+                </p>
+                <p>
+                    previously i have interned at <a href="https://www.assembleinc.com/" target="_blank"
+                        style="color:#034BBD">assemble inc.</a> a retail web development company helping to create
+                    e-commerse platforms for their clients. another relevent experience i've had is teaching scratch and
+                    python to middle school students at my highschool <a href="https://www.seattleacademy.org/"
+                        target="_blank" style="color:#AA182C;">seattle academy of arts and sciences</a>.
+                </p>
+                <p>
+                    i have proficiancy with the following languages: python, javascript. i can use c++, java and go as
+                    well,
+                    but i am not as well aquanted with them. i am also familiar with the following frameworks: react and
+                    next. i regularly use the following tools: git, github and vscode.
+                </p>
+                <p>
+                    some of my hobbies include: playing video games (card games like magic the gathering and inscyrption
+                    are
+                    my favorite), programming, and playing ultimate frisbee.
+                </p>`);
+        
+        // remove hidden class from the first div
+        content["welcome"].classList.remove('hidden');
+        // disable the first button
+        buttons["welcome"].disabled = true;
+
+        projects = "";
+
+
+        project_list = [
+            {
+                "img": `imgs/game.png`,
+                "link": `https://s-mith.itch.io/untitled-game`,
+                "title": `untitled game`,
+                "description": "my current project, a 2d massively multiplayer game made in python and pygame",
+                "github": `https://github.com/s-mith/game`,
+            },
+            {
+                "img": `imgs/portfolio.png`,
+                "link": `.`,
+                "title": `avery's portfolio`,
+                "description": "my portfolio website, made with html javascript and css. code is one file with a folder for imgs",
+                "github": `https://github.com/s-mith/static_portfolio`,
+            },
+            {
+                "img": `imgs/spacelord.png`,
+                "link": `https://s-mith.itch.io/space-lord-wagyu`,
+                "title": `space lord wagyu`,
+                "description": "a project made for spacescore #21 the theme was bounce",
+                "github": `https://github.com/s-mith/my_repo`
+
+            },
+            {
+                "img":`imgs/mc.png`,
+                "link": `https://status.sit26.eric.si/`,
+                "title": `sit mincraft server status`,
+                "description": "a website that shows the status of the minecraft server at stevens",
+                "github": `https://github.com/s-mith/minecraftstatus`
+            },
+            {
+                "img": `imgs/csgo.png`,
+                "link": ``,
+                "title": `csgo inventory veiwer (broken)`,
+                "description": "a csgo inventory viewer made with next.js",
+                "github": `https://github.com/s-mith/next_demo_text`
+
+            },
+            {
+                "img": `imgs/mgcards.png`,
+                "link": `https://machine-girl2.vercel.app/cards`,
+                "title": `machine girl scryfall`,
+                "description": "my first project using react. a collection of magic the gathering cards that were made as cocert merch for machine girl",
+                "github": `https://github.com/s-mith/machine-girl`
+
+            },
+            {
+                "img": `imgs/porbals.png`,
+                "link": `https://porbles.netlify.app/`,
+                "title": `porbals`,
+                "description": "simple game project that i did as a part of an independent study during highschool to learn more about game development. uses p5.js ",
+                "github": `https://github.com/s-mith/independent_study`
+            },
+            {
+                "img": `imgs/math.png`,
+                "link": `https://boxoptimize.netlify.app/`,
+                "title": `box optimizion project`,
+                "description": "a website that i made for my math class that helps you optimize the size of a box given a rectangles dimensions",
+                "github": `https://github.com/s-mith/math_website`
+            },
+            {
+                "img": `imgs/borble.png`,
+                "link": `https://borble.netlify.app/`,
+                "title": `borble`,
+                "description": "simple wordle clone made with html, css and javascript. uses seeds and dates to ensure each client has the same puzzle and is hosted on vercel",
+                "github": `https://github.com/s-mith/wordle_clone`
+            }
+        ]
+
+
+        for (let i = 0; i < project_list.length; i++) {
+            projects += `<div style="display: flex; padding-bottom: 2em;">
+
+                <div><img src="${project_list[i].img}" width="100" height="100"></div>
+                <div style="padding-left: 1em;"><a href="${project_list[i].link}"  target="_blank"><span
+                            class="project_title">${project_list[i].title}</span></a>
+                    <br>
+                    ${project_list[i].description}                    
+                    <br>
+                    <a href="${project_list[i].github}">github</a>
+                </div>
+
+                </div>`
+        }
+
+        // add the second section
+        new_section("projects", "my projects", "projects", projects);
+
+
+        // add the third section
+        new_section("contact", "contact me", "contact", ` <p>
+                    you can contact me at:
+                <ul>
+                    <li>
+                        you can reach me at <a href="mailto:me@avery.sbs">me@avery.sbs</a>
+                    </li>
+                    <li>
+                        on discord at <span style="color:#5865F2; font-weight: bold">lusio#9790</span>
+                    </li>
+                </ul>
+                </p>`);
     </script>
 
 </body>
